@@ -1,21 +1,38 @@
 ---
 ---
-<section id="nosotros" class="py-24 border-t border-white/5">
-    <div class="max-w-4xl mx-auto px-6 flex flex-col md:flex-row gap-16 items-center">
-      <div class="w-full md:w-1/2">
-        <p class="text-xs tracking-[0.4em] uppercase text-amber-400/60 mb-4">Quiénes somos</p>
-        <h2 class="font-['Playfair_Display'] text-4xl font-light text-amber-50 mb-6 leading-snug">
-          Venta de platillos de toda la región
-        </h2>
-        <div class="h-px w-12 bg-amber-400/30 mb-6"></div>
-        <p class="text-white/40 text-sm leading-relaxed">
-          Desde nuestra cocina hasta tu mesa, cada platillo es preparado con ingredientes frescos y recetas
-          tradicionales que han pasado de generación en generación. Nuestra misión es traerte el sabor auténtico
-          de la región en cada visita.
-        </p>
-      </div>
-      <div class="w-full md:w-1/2 aspect-square border border-white/5 overflow-hidden">
-        <img src="/images/portada.png" alt="Nosotros" class="w-full h-full object-cover opacity-60 hover:opacity-90 transition-opacity duration-500" />
+<section id="nosotros" class="py-24 px-4 md:px-6 bg-[#1a1208]">
+    <div class="max-w-5xl mx-auto">
+      <div class="flex flex-col md:flex-row gap-16 items-center">
+  
+        <!-- Imagen -->
+        <div class="w-full md:w-1/2 relative">
+          <div class="aspect-4/5 overflow-hidden">
+            <img src="/images/portada.png" alt="Nosotros" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-500" />
+          </div>
+          <!-- Marco decorativo dorado -->
+          <div class="absolute -bottom-4 -right-4 w-full h-full border border-[#c9a84c]/30 pointer-events-none"></div>
+        </div>
+  
+        <!-- Texto -->
+        <div class="w-full md:w-1/2 text-[#f5f0e8]">
+          <p class="font-['DM_Sans'] text-xs tracking-[0.5em] uppercase text-[#c9a84c] mb-6">✦ Quiénes somos ✦</p>
+          <h2 class="font-['Cormorant_Garamond'] text-5xl md:text-6xl font-light leading-tight mb-8">
+            Sabores que<br/><em class="text-[#c9a84c] not-italic">cuentan historias</em>
+          </h2>
+          <div class="h-px w-12 bg-[#c9a84c]/40 mb-8"></div>
+          <p class="font-['DM_Sans'] text-sm text-[#f5f0e8]/50 leading-relaxed mb-6">
+            Desde nuestra cocina hasta tu mesa, cada platillo es preparado con ingredientes frescos
+            y recetas tradicionales que han pasado de generación en generación.
+          </p>
+          <p class="font-['DM_Sans'] text-sm text-[#f5f0e8]/50 leading-relaxed mb-10">
+            Nuestra misión es traerte el sabor auténtico de la región en cada visita,
+            con el calor de hogar que solo una cocina familiar puede ofrecer.
+          </p>
+          <a href="#menu" class="inline-block font-['DM_Sans'] text-xs tracking-widest uppercase border border-[#c9a84c]/50 text-[#c9a84c] px-8 py-3 hover:bg-[#c9a84c] hover:text-[#1a1208] transition-all duration-300">
+            Ver nuestra carta
+          </a>
+        </div>
+  
       </div>
     </div>
   </section>

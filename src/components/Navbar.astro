@@ -1,41 +1,61 @@
 ---
 const links = [
-  { label: "Inicio", href: "#inicio" },
-  { label: "Menú", href: "#menu" },
+  { label: "Inicio",   href: "#inicio" },
+  { label: "Menú",     href: "#menu" },
   { label: "Nosotros", href: "#nosotros" },
   { label: "Contacto", href: "#contacto" },
 ];
 ---
 
-<nav class="fixed top-0 w-full z-50 px-6 py-4 flex justify-between items-center border-b border-white/10 backdrop-blur-md bg-black/40">
-  <span class="font-['Playfair_Display'] text-xl tracking-widest uppercase text-amber-100">
-    El Buen Sabor
-  </span>
-  <ul class="hidden md:flex gap-10 text-xs tracking-widest uppercase text-white/60">
-    {links.map(link => (
-      <li>
-        <a href={link.href} class="hover:text-amber-200 transition-colors duration-300">{link.label}</a>
-      </li>
-    ))}
-  </ul>
-  <button id="menu-btn" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Abrir menú">
-    <span class="block w-6 h-px bg-white transition-all duration-300" id="line1"></span>
-    <span class="block w-6 h-px bg-white transition-all duration-300" id="line2"></span>
-    <span class="block w-4 h-px bg-white transition-all duration-300" id="line3"></span>
-  </button>
+<nav class="fixed top-0 w-full z-50 backdrop-blur-md bg-[#f5f0e8]/90 border-b border-[#c9a84c]/20">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+
+    <!-- Logo -->
+    <div class="flex flex-col leading-none">
+      <span class="font-['Cormorant_Garamond'] text-xl font-semibold tracking-widest text-[#1a1208] uppercase">El Buen</span>
+      <span class="font-['Cormorant_Garamond'] text-xl font-light tracking-[0.3em] text-[#c9a84c] uppercase">Sabor</span>
+    </div>
+
+    <!-- Links desktop -->
+    <ul class="hidden md:flex gap-10 items-center">
+      {links.map(link => (
+        <li>
+          <a href={link.href} class="font-['DM_Sans'] text-xs tracking-[0.2em] uppercase text-[#3d2b1f]/70 hover:text-[#c9a84c] transition-colors duration-300">
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- CTA desktop -->
+    <a href="https://wa.me/51961329036" target="_blank" class="hidden md:block font-['DM_Sans'] text-xs tracking-widest uppercase border border-[#c9a84c] text-[#c9a84c] px-5 py-2 hover:bg-[#c9a84c] hover:text-[#1a1208] transition-all duration-300">
+      Reservar
+    </a>
+
+    <!-- Hamburguesa mobile -->
+    <button id="menu-btn" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Abrir menú">
+      <span class="block w-6 h-px bg-[#1a1208] transition-all duration-300" id="line1"></span>
+      <span class="block w-6 h-px bg-[#1a1208] transition-all duration-300" id="line2"></span>
+      <span class="block w-4 h-px bg-[#c9a84c] transition-all duration-300" id="line3"></span>
+    </button>
+  </div>
 </nav>
 
-<div id="mobile-menu" class="fixed top-16 left-0 w-full z-40 bg-black/95 backdrop-blur-md border-b border-white/10 flex flex-col items-center max-h-0 overflow-hidden transition-all duration-500">
+<!-- Menú mobile -->
+<div id="mobile-menu" class="fixed top-16.25 left-0 w-full z-40 bg-[#f5f0e8]/98 backdrop-blur-md border-b border-[#c9a84c]/20 flex flex-col items-center max-h-0 overflow-hidden transition-all duration-500">
   {links.map(link => (
-    <a href={link.href} class="mobile-link w-full text-center py-5 text-xs tracking-widest uppercase text-white/60 hover:text-amber-200 hover:bg-white/5 transition-all duration-300 border-b border-white/5">
+    <a href={link.href} class="mobile-link w-full text-center py-5 font-['DM_Sans'] text-xs tracking-[0.2em] uppercase text-[#3d2b1f]/70 hover:text-[#c9a84c] hover:bg-[#c9a84c]/5 transition-all duration-300 border-b border-[#c9a84c]/10">
       {link.label}
     </a>
   ))}
+  <a href="https://wa.me/51961329036" target="_blank" class="mobile-link my-4 font-['DM_Sans'] text-xs tracking-widest uppercase border border-[#c9a84c] text-[#c9a84c] px-8 py-3">
+    Reservar mesa
+  </a>
 </div>
 
 <script>
-  const btn = document.getElementById('menu-btn');
-  const menu = document.getElementById('mobile-menu');
+  const btn   = document.getElementById('menu-btn');
+  const menu  = document.getElementById('mobile-menu');
   const line1 = document.getElementById('line1');
   const line2 = document.getElementById('line2');
   const line3 = document.getElementById('line3');
@@ -43,7 +63,7 @@ const links = [
 
   btn?.addEventListener('click', () => {
     open = !open;
-    menu!.style.maxHeight = open ? '400px' : '0px';
+    menu!.style.maxHeight = open ? '500px' : '0px';
     if (open) {
       line1!.style.transform = 'translateY(8px) rotate(45deg)';
       line2!.style.opacity = '0';
