@@ -1,0 +1,70 @@
+---
+const links = [
+  { label: "Inicio", href: "#inicio" },
+  { label: "Menú", href: "#menu" },
+  { label: "Nosotros", href: "#nosotros" },
+  { label: "Contacto", href: "#contacto" },
+];
+---
+
+<nav class="fixed top-0 w-full z-50 px-6 py-4 flex justify-between items-center border-b border-white/10 backdrop-blur-md bg-black/40">
+  <span class="font-['Playfair_Display'] text-xl tracking-widest uppercase text-amber-100">
+    El Buen Sabor
+  </span>
+  <ul class="hidden md:flex gap-10 text-xs tracking-widest uppercase text-white/60">
+    {links.map(link => (
+      <li>
+        <a href={link.href} class="hover:text-amber-200 transition-colors duration-300">{link.label}</a>
+      </li>
+    ))}
+  </ul>
+  <button id="menu-btn" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Abrir menú">
+    <span class="block w-6 h-px bg-white transition-all duration-300" id="line1"></span>
+    <span class="block w-6 h-px bg-white transition-all duration-300" id="line2"></span>
+    <span class="block w-4 h-px bg-white transition-all duration-300" id="line3"></span>
+  </button>
+</nav>
+
+<div id="mobile-menu" class="fixed top-16 left-0 w-full z-40 bg-black/95 backdrop-blur-md border-b border-white/10 flex flex-col items-center max-h-0 overflow-hidden transition-all duration-500">
+  {links.map(link => (
+    <a href={link.href} class="mobile-link w-full text-center py-5 text-xs tracking-widest uppercase text-white/60 hover:text-amber-200 hover:bg-white/5 transition-all duration-300 border-b border-white/5">
+      {link.label}
+    </a>
+  ))}
+</div>
+
+<script>
+  const btn = document.getElementById('menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const line1 = document.getElementById('line1');
+  const line2 = document.getElementById('line2');
+  const line3 = document.getElementById('line3');
+  let open = false;
+
+  btn?.addEventListener('click', () => {
+    open = !open;
+    menu!.style.maxHeight = open ? '400px' : '0px';
+    if (open) {
+      line1!.style.transform = 'translateY(8px) rotate(45deg)';
+      line2!.style.opacity = '0';
+      line3!.style.transform = 'translateY(-8px) rotate(-45deg)';
+      line3!.style.width = '24px';
+    } else {
+      line1!.style.transform = 'none';
+      line2!.style.opacity = '1';
+      line3!.style.transform = 'none';
+      line3!.style.width = '16px';
+    }
+  });
+
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      open = false;
+      menu!.style.maxHeight = '0px';
+      line1!.style.transform = 'none';
+      line2!.style.opacity = '1';
+      line3!.style.transform = 'none';
+      line3!.style.width = '16px';
+    });
+  });
+</script>

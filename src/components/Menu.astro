@@ -1,0 +1,81 @@
+---
+const categorias = [
+  {
+    nombre: "Desayuno",
+    imagen: "/images/desayuno.jpg",
+    platillos: [
+      { nombre: "Pan con chicharrón", precio: "S/ 4.00" },
+      { nombre: "Tamal", precio: "S/ 2.00" },
+      { nombre: "Humita", precio: "S/ 2.00" },
+    ],
+  },
+  {
+    nombre: "Almuerzo",
+    imagen: "/images/almuerzo.jpg",
+    platillos: [
+      { nombre: "Ceviche", precio: "S/ 6.00" },
+      { nombre: "Lomo saltado", precio: "S/ 7.00" },
+      { nombre: "Ají de gallina", precio: "S/ 6.00" },
+    ],
+  },
+  {
+    nombre: "Cena",
+    imagen: "/images/cena.jpg",
+    platillos: [
+      { nombre: "Anticuchos", precio: "S/ 2.00" },
+      { nombre: "Pollo a la brasa + papas", precio: "S/ 45.00" },
+      { nombre: "Salchipollo", precio: "S/ 6.00" },
+    ],
+  },
+];
+
+const postres = [
+  { nombre: "Arroz con leche", precio: "S/ 3.00", imagen: "/images/arroz_leche.png" },
+  { nombre: "Mazamorra morada", precio: "S/ 3.00", imagen: "/images/mazamorra.png" },
+  { nombre: "Arroz zambito", precio: "S/ 4.00", imagen: "/images/arroz_zambito.png" },
+];
+---
+
+<section id="menu" class="py-24 px-6 max-w-5xl mx-auto">
+  <p class="text-xs tracking-[0.4em] uppercase text-amber-400/60 mb-2 text-center">Lo que ofrecemos</p>
+  <h2 class="font-['Playfair_Display'] text-5xl text-center mb-16 font-light text-amber-50">Menú</h2>
+
+  <div class="flex flex-col gap-16">
+    {categorias.map((cat, i) => (
+      <div class={`flex flex-col ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-8 items-center border border-white/5 p-6`}>
+        <div class="w-full md:w-2/5 aspect-video overflow-hidden">
+          <img src={cat.imagen} alt={cat.nombre} class="w-full h-full object-cover opacity-80 hover:opacity-100 hover:scale-105 transition-all duration-500" />
+        </div>
+        <div class="w-full md:w-3/5">
+          <h3 class="font-['Playfair_Display'] text-3xl font-light text-amber-100 mb-6">{cat.nombre}</h3>
+          <div class="flex flex-col gap-3">
+            {cat.platillos.map(p => (
+              <div class="flex justify-between items-center border-b border-white/5 pb-3">
+                <span class="text-white/60 text-sm tracking-wide">{p.nombre}</span>
+                <span class="text-amber-400 text-sm font-light">{p.precio}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <div class="mt-24">
+    <p class="text-xs tracking-[0.4em] uppercase text-amber-400/60 mb-2 text-center">Para terminar</p>
+    <h3 class="font-['Playfair_Display'] text-4xl text-center mb-12 font-light text-amber-50">Postres</h3>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {postres.map(p => (
+        <div class="border border-white/5 group overflow-hidden">
+          <div class="aspect-square overflow-hidden">
+            <img src={p.imagen} alt={p.nombre} class="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" />
+          </div>
+          <div class="p-4 flex justify-between items-center">
+            <span class="text-white/60 text-sm tracking-wide">{p.nombre}</span>
+            <span class="text-amber-400 text-sm">{p.precio}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
